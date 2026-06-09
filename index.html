@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loving Care Laundry Service | Greenfields, WA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,600&family=DM+Sans:wght@400;500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --snow:#EEF4F9;
+    --ink:#15324A;
+    --azure:#2F6F9F;
+    --sky:#A9CBE0;
+    --paper-edge:#D9E5EE;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'DM Sans', sans-serif;
+    background-color:var(--snow);
+    color:var(--ink);
+    line-height:1.6;
+    position:relative;
+  }
+  /* paper/linen texture overlay */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:1;
+    opacity:0.5;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.106  0 0 0 0 0.227  0 0 0 0 0.294  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  h1,h2,h3{
+    font-family:'Playfair Display', serif;
+    color:var(--ink);
+    line-height:1.15;
+  }
+  a{color:inherit; text-decoration:none;}
+  .accent-script{
+    font-family:'Dancing Script', cursive;
+    color:var(--azure);
+    font-weight:600;
+  }
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+    position:relative;
+    z-index:2;
+  }
+
+  /* ---------- HEADER / NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--paper-edge);
+    transition:box-shadow .3s ease;
+  }
+  header.scrolled{ box-shadow:0 6px 24px rgba(27,58,75,0.08); }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 28px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+  }
+  .logo-img{
+    height:58px;
+    width:auto;
+    display:block;
+    transition:transform .35s ease;
+  }
+  .logo:hover .logo-img{ transform:scale(1.05); }
+  .nav-links{
+    display:flex;
+    gap:30px;
+    list-style:none;
+    align-items:center;
+  }
+  .nav-links a{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:7px;
+    font-weight:700;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:1.4px;
+    position:relative;
+    padding:6px 4px;
+    color:var(--ink);
+    transition:color .25s ease, transform .25s ease;
+  }
+  .nav-links a svg{
+    width:24px;
+    height:24px;
+    stroke:var(--azure);
+    transition:stroke .25s ease, transform .25s ease;
+  }
+  .nav-links a:hover{
+    color:var(--azure);
+    transform:translateY(-2px);
+  }
+  .nav-links a:hover svg{
+    stroke:var(--ink);
+    transform:scale(1.12);
+  }
+  .nav-call{
+    background:var(--ink);
+    color:var(--snow) !important;
+    padding:10px 20px;
+    border-radius:18px;
+  }
+  .nav-call svg{ stroke:var(--snow); }
+  .nav-call:hover{
+    background:#1F557D;
+    transform:scale(1.05);
+    color:var(--snow) !important;
+  }
+  .nav-call:hover svg{ stroke:var(--snow); transform:scale(1.12); }
+
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+  }
+  .hamburger span{
+    display:block;
+    width:26px; height:3px;
+    background:var(--ink);
+    border-radius:2px;
+    transition:.3s ease;
+  }
+  .hamburger.open span:nth-child(1){ transform:translateY(8px) rotate(45deg); }
+  .hamburger.open span:nth-child(2){ opacity:0; }
+  .hamburger.open span:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:110px 0 130px;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:50px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.4rem);
+    font-weight:700;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--azure);
+  }
+  .hero p.sub{
+    margin-top:22px;
+    font-size:1.18rem;
+    max-width:46ch;
+    color:#3D5A6E;
+  }
+  .hero-ctas{
+    margin-top:36px;
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block;
+    padding:15px 34px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:1rem;
+    cursor:pointer;
+    border:2px solid transparent;
+    transition:all .25s ease;
+  }
+  .btn-primary{
+    background:var(--azure);
+    color:var(--snow);
+  }
+  .btn-primary:hover{
+    background:#1F557D;
+    transform:scale(1.045);
+    box-shadow:0 10px 28px rgba(47,111,159,0.35);
+  }
+  .btn-secondary{
+    background:transparent;
+    color:var(--ink);
+    border-color:var(--ink);
+  }
+  .btn-secondary:hover{
+    background:var(--ink);
+    color:var(--snow);
+    transform:scale(1.045);
+  }
+
+  /* bubble / steam illustration */
+  .bubble-art{
+    position:relative;
+    height:420px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero-video-frame{
+    position:relative;
+    width:330px;
+    height:330px;
+    border-radius:50% 50% 46% 54% / 56% 54% 46% 44%;
+    overflow:hidden;
+    border:7px solid #fff;
+    box-shadow:0 34px 70px rgba(21,50,74,0.22);
+    z-index:2;
+  }
+  .hero-video-frame video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  /* ---------- SECTION HEADINGS ---------- */
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .section-head .kicker{
+    text-transform:uppercase;
+    letter-spacing:2.5px;
+    font-size:0.8rem;
+    font-weight:700;
+    color:var(--azure);
+  }
+  .section-head h2{
+    font-size:clamp(2rem, 4.4vw, 3rem);
+    margin-top:10px;
+  }
+  .section-head p{
+    margin-top:14px;
+    color:#3D5A6E;
+    font-size:1.08rem;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(34px);
+    transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services{
+    padding:120px 0;
+    position:relative;
+  }
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  @media (max-width: 880px){
+    .service-grid{ grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (max-width: 560px){
+    .service-grid{ grid-template-columns:1fr; }
+  }
+  .service-card{
+    background:#FFFFFF;
+    border:1px solid var(--paper-edge);
+    border-radius:28px 28px 28px 6px;
+    padding:36px 30px;
+    transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+    position:relative;
+  }
+  .service-card:nth-child(even){
+    border-radius:28px 6px 28px 28px;
+  }
+  .service-card:hover{
+    transform:translateY(-8px) rotate(-0.6deg);
+    box-shadow:0 22px 48px rgba(47,111,159,0.18);
+    border-color:var(--azure);
+  }
+  .service-card svg{ width:56px; height:56px; margin-bottom:18px; }
+  .service-card h3{
+    font-size:1.34rem;
+    margin-bottom:10px;
+  }
+  .service-card p{ color:#3D5A6E; font-size:0.98rem; }
+
+  /* ---------- PRICING ---------- */
+  .pricing{
+    padding:120px 0;
+    background:#fff;
+    border-top:1px solid var(--paper-edge);
+    border-bottom:1px solid var(--paper-edge);
+  }
+  .pricing h3{
+    font-size:1.4rem;
+    margin-bottom:24px;
+  }
+  .price-band, .price-table-wrap, .price-extras{
+    margin-bottom:60px;
+  }
+  .price-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  @media (max-width:760px){
+    .price-grid{ grid-template-columns:1fr; }
+  }
+  .price-card{
+    background:var(--snow);
+    border:1px solid var(--paper-edge);
+    border-radius:22px 22px 22px 6px;
+    padding:30px 28px;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .price-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 40px rgba(47,111,159,0.16);
+  }
+  .price-amount{
+    display:block;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:2.4rem;
+    color:var(--azure);
+    margin-bottom:8px;
+  }
+  .price-label{ color:#3D5A6E; font-size:0.98rem; }
+  .price-table{
+    list-style:none;
+    border-top:1px solid var(--paper-edge);
+  }
+  .price-table li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding:17px 4px;
+    border-bottom:1px solid var(--paper-edge);
+    color:#3D5A6E;
+    font-size:1.02rem;
+  }
+  .price-table li span:last-child{
+    flex-shrink:0;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:700;
+    color:var(--ink);
+    font-size:1.12rem;
+  }
+  .extras-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+  }
+  .extra-chip{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    background:var(--snow);
+    border:1px solid var(--paper-edge);
+    border-radius:999px;
+    padding:14px 28px;
+    flex:1 1 230px;
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .extra-chip:hover{
+    transform:translateY(-4px);
+    border-color:var(--azure);
+  }
+  .extra-chip strong{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    color:var(--azure);
+    font-size:1.22rem;
+  }
+  .extra-chip span{ color:#3D5A6E; font-size:0.94rem; }
+  .price-note{
+    margin-top:54px;
+    padding:26px 30px;
+    background:var(--ink);
+    color:var(--snow);
+    border-radius:18px 18px 18px 6px;
+    font-size:0.99rem;
+    line-height:1.7;
+  }
+  .price-note strong{ color:#fff; }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .how{
+    padding:120px 0;
+    background:var(--ink);
+    color:var(--snow);
+    position:relative;
+    overflow:hidden;
+  }
+  .how::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:radial-gradient(circle at 85% 20%, rgba(47,111,159,0.18), transparent 45%),
+                     radial-gradient(circle at 10% 85%, rgba(169,203,224,0.16), transparent 45%);
+    pointer-events:none;
+  }
+  .how .section-head .kicker{ color:var(--sky); }
+  .how .section-head h2, .how .section-head p{ color:var(--snow); }
+  .how .section-head p{ color:#cdd9de; }
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+    position:relative;
+    z-index:2;
+  }
+  @media (max-width: 880px){
+    .steps{ grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (max-width: 560px){
+    .steps{ grid-template-columns:1fr; }
+  }
+  .step{
+    background:rgba(238,244,249,0.06);
+    border:1px solid rgba(238,244,249,0.16);
+    border-radius:20px;
+    padding:30px 26px;
+    transition:transform .3s ease, background .3s ease;
+  }
+  .step:hover{
+    transform:translateY(-6px);
+    background:rgba(238,244,249,0.12);
+  }
+  .step .num{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:2.2rem;
+    color:var(--azure);
+    display:block;
+    margin-bottom:10px;
+  }
+  .step h3{ color:var(--snow); font-size:1.18rem; margin-bottom:8px;}
+  .step p{ color:#cdd9de; font-size:0.95rem; }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    padding:120px 0;
+  }
+  .about .wrap{
+    display:grid;
+    grid-template-columns:1fr 1.15fr;
+    gap:60px;
+    align-items:center;
+  }
+  .about-frame{
+    border:2px solid var(--ink);
+    border-radius:6px 32px 6px 32px;
+    padding:46px 38px;
+    position:relative;
+    background:rgba(255,250,242,0.6);
+  }
+  .about-frame::before{
+    content:"";
+    position:absolute;
+    top:14px; left:14px; right:-14px; bottom:-14px;
+    border:2px solid var(--azure);
+    border-radius:6px 32px 6px 32px;
+    z-index:-1;
+  }
+  .about-frame h2{
+    font-size:clamp(1.9rem, 4vw, 2.6rem);
+  }
+  .about-frame p{
+    margin-top:18px;
+    color:#3D5A6E;
+    font-size:1.06rem;
+  }
+  .owner-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    margin-top:30px;
+  }
+  .owner-chip{
+    flex:1 1 220px;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    background:rgba(255,250,242,0.7);
+    border:1px solid var(--paper-edge);
+    border-radius:16px;
+    padding:16px 18px;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .owner-chip:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 34px rgba(27,58,75,0.12);
+  }
+  .owner-initial{
+    flex-shrink:0;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:1.2rem;
+    color:var(--snow);
+  }
+  .owner-chip strong{
+    display:block;
+    font-family:'Playfair Display', serif;
+    font-size:1.08rem;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+  .owner-chip span{
+    font-size:0.92rem;
+    color:#3D5A6E;
+    line-height:1.5;
+  }
+  .signoff{
+    margin-top:32px;
+    font-size:1.06rem;
+    color:var(--ink);
+  }
+  .signoff .accent-script{
+    font-size:1.7rem;
+    line-height:1.3;
+  }
+  .about-portrait{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .portrait-shape{
+    width:100%;
+    max-width:380px;
+    aspect-ratio:1/1.05;
+    border-radius:50% 50% 46% 54% / 56% 54% 46% 44%;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    box-shadow:0 30px 70px rgba(27,58,75,0.18);
+  }
+  .portrait-shape img{
+    width:72%;
+    height:72%;
+    object-fit:contain;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    padding:120px 0;
+    background:#FFFFFF;
+    border-top:1px solid var(--paper-edge);
+    border-bottom:1px solid var(--paper-edge);
+  }
+  .contact .wrap{
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:60px;
+    align-items:start;
+  }
+  .contact form{ width:100%; }
+  .contact-info h2{
+    font-size:clamp(2rem, 4.4vw, 2.8rem);
+  }
+  .contact-info p{ color:#3D5A6E; margin-top:14px; font-size:1.05rem; }
+  .info-line{
+    margin-top:26px;
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    font-size:1.06rem;
+  }
+  .info-line svg{ flex-shrink:0; width:26px; height:26px; color:var(--azure); }
+  .info-line a{ font-weight:700; color:var(--ink); }
+  .info-line a:hover{ color:var(--azure); }
+
+  form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    background:var(--snow);
+    border:1px solid var(--paper-edge);
+    border-radius:24px;
+    padding:38px;
+  }
+  form label{
+    font-weight:700;
+    font-size:0.92rem;
+    margin-bottom:6px;
+    display:block;
+  }
+  form input, form textarea{
+    width:100%;
+    padding:13px 16px;
+    border-radius:14px;
+    border:1.5px solid var(--paper-edge);
+    background:#FFFFFF;
+    font-family:'DM Sans', sans-serif;
+    font-size:1rem;
+    color:var(--ink);
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  form input:focus, form textarea:focus{
+    outline:none;
+    border-color:var(--azure);
+    box-shadow:0 0 0 4px rgba(47,111,159,0.12);
+  }
+  form textarea{ resize:vertical; min-height:120px; }
+  form button{
+    align-self:flex-start;
+    border:none;
+    font-family:inherit;
+  }
+  .form-msg{
+    margin-top:6px;
+    font-weight:700;
+    color:var(--sky);
+    display:none;
+  }
+  .form-msg.show{ display:block; }
+
+  /* ---------- SERVICE AREA ---------- */
+  .service-area{
+    padding:120px 0;
+    background:var(--snow);
+    border-top:1px solid var(--paper-edge);
+  }
+  .suburb-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-bottom:48px;
+  }
+  .suburb-tag{
+    background:#fff;
+    border:1.5px solid var(--paper-edge);
+    border-radius:999px;
+    padding:10px 22px;
+    font-size:0.95rem;
+    font-weight:500;
+    color:var(--ink);
+    transition:background .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
+    cursor:default;
+  }
+  .suburb-tag:hover{
+    background:var(--azure);
+    border-color:var(--azure);
+    color:#fff;
+    transform:translateY(-3px);
+  }
+  .area-note{
+    font-size:1rem;
+    color:#3D5A6E;
+  }
+  .area-note a{
+    font-weight:700;
+    color:var(--azure);
+  }
+  .area-note a:hover{ text-decoration:underline; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:#cdd9de;
+    text-align:center;
+    padding:36px 22px;
+    font-size:0.94rem;
+  }
+  footer a{ color:var(--snow); font-weight:700; }
+  footer a:hover{ color:var(--azure); }
+  footer .foot-logo{
+    display:inline-block;
+    margin-bottom:18px;
+  }
+  .foot-logo-img{
+    height:64px;
+    background:#fff;
+    border-radius:16px;
+    padding:8px 14px;
+    box-shadow:0 16px 38px rgba(0,0,0,0.28);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px){
+    .hero .wrap, .about .wrap, .contact .wrap{
+      grid-template-columns:1fr;
+    }
+    .bubble-art{ height:240px; order:-1; }
+    .about-portrait{ order:-1; }
+  }
+  @media (max-width: 760px){
+    .nav-links{
+      position:absolute;
+      top:100%;
+      left:0; right:0;
+      background:var(--snow);
+      flex-direction:column;
+      align-items:flex-start;
+      gap:0;
+      padding:0;
+      max-height:0;
+      overflow:hidden;
+      border-bottom:1px solid var(--paper-edge);
+      transition:max-height .35s ease;
+    }
+    .nav-links.open{ max-height:430px; }
+    .nav-links li{ width:100%; }
+    .nav-links a{
+      flex-direction:row;
+      justify-content:flex-start;
+      gap:16px;
+      padding:16px 28px;
+      width:100%;
+      font-size:0.85rem;
+      border-bottom:1px solid var(--paper-edge);
+    }
+    .nav-links a:hover{ transform:none; }
+    .nav-call{ margin:16px 28px; width:calc(100% - 56px); justify-content:center; border-bottom:none; }
+    .hamburger{ display:flex; }
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <nav>
+    <a href="#home" class="logo">
+      <img src="laundry%20logo.png" alt="Loving Care Laundry Service" class="logo-img">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><span>Home</span></a></li>
+      <li><a href="#pricing"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 21 11a2 2 0 0 1 0 2.8L14.8 20a2 2 0 0 1-2.8 0L3 11.2V2z"/><circle cx="7.7" cy="6.7" r="1.3"/></svg><span>Pricing</span></a></li>
+      <li><a href="#services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><circle cx="12" cy="13" r="5"/><path d="M9.5 13a2.5 2.5 0 0 0 5 1.6"/><circle cx="8" cy="6.4" r=".6" fill="currentColor" stroke="none"/></svg><span>Services</span></a></li>
+      <li><a href="#how"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.2"/><circle cx="12" cy="6" r="2.2"/><circle cx="19" cy="18" r="2.2"/><path d="M7 11l3.5-3.6M13.7 7.4L17 16"/></svg><span>How It Works</span></a></li>
+      <li><a href="#area"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg><span>Service Area</span></a></li>
+      <li><a href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg><span>Contact</span></a></li>
+      <li><a href="tel:0455527765" class="nav-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg><span>Call Now</span></a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <h1 class="reveal">Fresh laundry,<br><em>without lifting a finger.</em></h1>
+      <p class="sub reveal">Loving Care Laundry Service is your friendly, local pickup &amp; delivery laundry, run by Watsana right here in Greenfields. We treat every garment like it's our own. No fuss, no stress, just fresh, clean laundry back at your door.</p>
+      <div class="hero-ctas reveal">
+        <a href="tel:0455527765" class="btn btn-primary">Call Now: 0455 527 765</a>
+        <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+      </div>
+    </div>
+    <div class="bubble-art reveal">
+      <div class="hero-video-frame">
+        <video autoplay muted playsinline>
+          <source src="animated%20laundry.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">What we do</span>
+      <h2>Laundry care for every part of your life</h2>
+      <p>From the everyday wash to the trickiest delicates, and from family homes to busy local businesses, we've got it covered.</p>
+    </div>
+    <div class="service-grid">
+
+      <div class="service-card reveal">
+        <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="8" width="46" height="50" rx="7"/>
+          <circle cx="32" cy="36" r="14"/>
+          <path d="M25 36 a7 7 0 0 0 14 4" />
+          <circle cx="18" cy="17" r="1.8" fill="var(--azure)" stroke="none"/>
+          <circle cx="26" cy="17" r="1.8" fill="var(--sky)" stroke="none"/>
+        </svg>
+        <h3>Wash, Dry &amp; Fold</h3>
+        <p>Everyday laundry, washed with care, dried just right and folded neatly, ready to put straight away.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 46 L40 20 a6 6 0 0 1 9 9 L25 53 a8 8 0 0 1-13-2z"/>
+          <path d="M16 50 q-4 6-10 6"/>
+          <circle cx="44" cy="20" r="2" fill="var(--azure)" stroke="none"/>
+        </svg>
+        <h3>Ironing</h3>
+        <p>Crisp shirts, neat linens, sharp creases: we'll have everything pressed and looking its best.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 40 V24 h28 v16"/>
+          <path d="M34 30 h12 l8 9 v9 h-20z"/>
+          <circle cx="18" cy="44" r="5"/>
+          <circle cx="46" cy="44" r="5"/>
+          <path d="M2 40 h6"/>
+        </svg>
+        <h3>Pickup &amp; Delivery</h3>
+        <p>Leave it at your door and we'll do the rest: collected, cleaned and brought back, usually the next day.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 30 L32 12 L54 30"/>
+          <path d="M16 28 V52 h36 V28"/>
+          <rect x="28" y="38" width="8" height="14"/>
+          <circle cx="20" cy="20" r="1.6" fill="var(--sky)" stroke="none"/>
+        </svg>
+        <h3>Home Needs</h3>
+        <p>Bedding, towels, school uniforms, the weekly family wash, all sorted, so you don't have to think about it.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="12" y="14" width="40" height="42" rx="3"/>
+          <path d="M20 24 h6 M20 34 h6 M20 44 h6 M38 24 h6 M38 34 h6"/>
+          <rect x="38" y="42" width="6" height="14"/>
+        </svg>
+        <h3>Business Needs</h3>
+        <p>Hairdressers, Airbnbs and holiday rentals: reliable, regular turnarounds so you're always guest-ready.</p>
+      </div>
+
+      <div class="service-card reveal">
+        <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 10 C 18 22, 16 34, 32 50 C 48 34, 46 22, 32 10 Z"/>
+          <path d="M32 50 V 58"/>
+          <circle cx="32" cy="30" r="1.8" fill="var(--sky)" stroke="none"/>
+        </svg>
+        <h3>Eco-Friendly Care</h3>
+        <p>Gentle, low-impact detergents and efficient machines, kind to your clothes, your skin, and the Greenfields we call home.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Pricing</span>
+      <h2>Simple, honest pricing, no surprises</h2>
+      <p>We keep things straightforward, just the way we'd want it explained to us. Here's what you can expect to pay for our most popular services.</p>
+    </div>
+
+    <div class="price-band reveal">
+      <h3>Wash, Dry &amp; Fold</h3>
+      <div class="price-grid">
+        <div class="price-card">
+          <span class="price-amount">$27.50</span>
+          <span class="price-label">per 5kg load of washing</span>
+        </div>
+        <div class="price-card">
+          <span class="price-amount">$27.50</span>
+          <span class="price-label">per single or double blanket / doona</span>
+        </div>
+        <div class="price-card">
+          <span class="price-amount">$41.25</span>
+          <span class="price-label">per queen or king blanket / doona</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-table-wrap reveal">
+      <h3>Ironing, priced per item</h3>
+      <ul class="price-table">
+        <li><span>Kids' clothes &amp; pillowcases</span><span>$2.75</span></li>
+        <li><span>Everyday basics: tees, shorts, jeans</span><span>$3.41</span></li>
+        <li><span>Business wear: shirts, blouses, dresses</span><span>$4.17</span></li>
+        <li><span>Single bedding &amp; tablecloths</span><span>$6.82</span></li>
+        <li><span>Special-occasion dresses</span><span>$8.36</span></li>
+        <li><span>Double / queen bedding</span><span>$10.22</span></li>
+        <li><span>King bedding</span><span>$12.32</span></li>
+      </ul>
+    </div>
+
+    <div class="price-extras reveal">
+      <h3>Little extras</h3>
+      <div class="extras-grid">
+        <div class="extra-chip"><strong>$12.50</strong><span>Pickup &amp; delivery</span></div>
+        <div class="extra-chip"><strong>$4.95</strong><span>Hand-washing for delicates</span></div>
+        <div class="extra-chip"><strong>$14.85</strong><span>Folding only: you wash, we fold</span></div>
+        <div class="extra-chip"><strong>$3.30</strong><span>Eco-friendly wash liquid, per load</span></div>
+      </div>
+    </div>
+
+    <p class="price-note reveal">Our minimum charge per pickup is <strong>$60 (incl. GST)</strong>. Payment is taken securely online before your laundry is delivered back. No cash, no awkward exchanges, just a simple tap and you're done.</p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">How it works</span>
+      <h2>Six simple steps to fresher laundry</h2>
+      <p>We've made it as easy as possible: book once, and let us take it from there.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><span class="num">01</span><h3>Contact us</h3><p>Give us a call or send a message, and tell us a bit about what you need.</p></div>
+      <div class="step reveal"><span class="num">02</span><h3>Confirm your booking</h3><p>We'll lock in a pickup day and time that suits you, no hassle at all.</p></div>
+      <div class="step reveal"><span class="num">03</span><h3>Leave it at your door</h3><p>Pop your laundry out front. There's no need to wait around for us.</p></div>
+      <div class="step reveal"><span class="num">04</span><h3>We collect &amp; clean</h3><p>We collect, then wash, dry and fold everything with proper care and attention.</p></div>
+      <div class="step reveal"><span class="num">05</span><h3>We deliver it back</h3><p>Fresh and folded laundry is returned to your door, usually the very next day.</p></div>
+      <div class="step reveal"><span class="num">06</span><h3>Pay online</h3><p>Settle up simply and securely online: quick, easy, and no awkward exchanges.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-frame reveal">
+      <h2>Hi, I'm Watsana</h2>
+      <p>(Insert Here)</p>
+
+      <p class="signoff">With care,<br><span class="accent-script">Watsana</span></p>
+    </div>
+    <div class="about-portrait reveal">
+      <div class="portrait-shape">
+        <img src="laundry%20logo.png" alt="Loving Care Laundry Service logo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-info reveal">
+      <span class="kicker" style="color:var(--azure); text-transform:uppercase; letter-spacing:2.5px; font-size:0.8rem; font-weight:700;">Get in touch</span>
+      <h2>Let's get your laundry sorted</h2>
+      <p>Have a question, or ready to book your first pickup? Send us a message or give us a ring. We'd love to hear from you.</p>
+      <div class="info-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        <span>Greenfields, WA</span>
+      </div>
+      <div class="info-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:0455527765">0455 527 765</a>
+      </div>
+      <div class="info-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>
+        <a href="mailto:cleanlovingcarelaundry@gmail.com">cleanlovingcarelaundry@gmail.com</a>
+      </div>
+    </div>
+    <form id="contactForm" class="reveal">
+      <div>
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+      </div>
+      <div>
+        <label for="phone">Phone number</label>
+        <input type="tel" id="phone" name="phone" placeholder="04xx xxx xxx" required>
+      </div>
+      <div>
+        <label for="message">What do you need help with?</label>
+        <textarea id="message" name="message" placeholder="Tell us a little about your laundry needs..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+      <p class="form-msg" id="formMsg">Thanks! We'll be in touch soon. 🌿</p>
+    </form>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="service-area" id="area">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Service Area</span>
+      <h2>We come to you</h2>
+      <p>Based in Greenfields, we cover Mandurah and the surrounding Peel region. If your suburb is listed below, we can pick up and deliver right to your door.</p>
+    </div>
+    <div class="suburb-grid reveal">
+      <span class="suburb-tag">Mandurah</span>
+      <span class="suburb-tag">Greenfields</span>
+      <span class="suburb-tag">Lakelands</span>
+      <span class="suburb-tag">Meadow Springs</span>
+      <span class="suburb-tag">Halls Head</span>
+      <span class="suburb-tag">Falcon</span>
+      <span class="suburb-tag">Wannanup</span>
+      <span class="suburb-tag">San Remo</span>
+      <span class="suburb-tag">Erskine</span>
+      <span class="suburb-tag">Madora Bay</span>
+      <span class="suburb-tag">Singleton</span>
+      <span class="suburb-tag">Dawesville</span>
+      <span class="suburb-tag">Dudley Park</span>
+      <span class="suburb-tag">Coodanup</span>
+      <span class="suburb-tag">Ravenswood</span>
+      <span class="suburb-tag">Riverside</span>
+      <span class="suburb-tag">Pinjarra</span>
+      <span class="suburb-tag">Barragup</span>
+      <span class="suburb-tag">Herron</span>
+      <span class="suburb-tag">Furnissdale</span>
+      <span class="suburb-tag">Bouvard</span>
+      <span class="suburb-tag">Baldivis</span>
+      <span class="suburb-tag">Secret Harbour</span>
+      <span class="suburb-tag">Golden Bay</span>
+      <span class="suburb-tag">Port Kennedy</span>
+      <span class="suburb-tag">Rockingham</span>
+    </div>
+    <p class="area-note reveal">Not sure if we cover your area? Give us a call on <a href="tel:0455527765">0455 527 765</a> and we'll let you know.</p>
+  </div>
+</section>
+
+<footer>
+  <span class="foot-logo">
+    <img src="laundry%20logo.png" alt="Loving Care Laundry Service" class="logo-img foot-logo-img">
+  </span>
+  <p>&copy; <span id="year"></span> Loving Care Laundry Service &nbsp;|&nbsp; Greenfields, WA &nbsp;|&nbsp; <a href="tel:0455527765">0455 527 765</a></p>
+</footer>
+
+<script>
+  // sticky header shadow
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 12);
+  });
+
+  // mobile hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // scroll reveal animations
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // contact form
+  const form = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    formMsg.classList.add('show');
+    form.reset();
+    setTimeout(() => formMsg.classList.remove('show'), 6000);
+  });
+
+  // footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
