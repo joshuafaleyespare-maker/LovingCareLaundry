@@ -605,50 +605,45 @@
   .info-line a{ font-weight:700; color:var(--ink); }
   .info-line a:hover{ color:var(--azure); }
 
-  form{
+  .booking-ctas{
     display:flex;
     flex-direction:column;
-    gap:18px;
-    background:var(--snow);
-    border:1px solid var(--paper-edge);
-    border-radius:24px;
-    padding:38px;
+    gap:20px;
+    justify-content:center;
   }
-  form label{
-    font-weight:700;
-    font-size:0.92rem;
-    margin-bottom:6px;
-    display:block;
-  }
-  form input, form textarea{
-    width:100%;
-    padding:13px 16px;
-    border-radius:14px;
+  .booking-card{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    background:#fff;
     border:1.5px solid var(--paper-edge);
-    background:#FFFFFF;
-    font-family:'DM Sans', sans-serif;
-    font-size:1rem;
-    color:var(--ink);
-    transition:border-color .2s ease, box-shadow .2s ease;
+    border-radius:20px;
+    padding:28px 30px;
+    transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    text-decoration:none;
   }
-  form input:focus, form textarea:focus{
-    outline:none;
+  .booking-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 18px 42px rgba(47,111,159,0.16);
     border-color:var(--azure);
-    box-shadow:0 0 0 4px rgba(47,111,159,0.12);
   }
-  form textarea{ resize:vertical; min-height:120px; }
-  form button{
-    align-self:flex-start;
-    border:none;
-    font-family:inherit;
+  .booking-card svg{
+    width:36px;
+    height:36px;
+    flex-shrink:0;
+    stroke:var(--azure);
   }
-  .form-msg{
-    margin-top:6px;
-    font-weight:700;
-    color:var(--sky);
-    display:none;
+  .booking-card strong{
+    display:block;
+    font-family:'Playfair Display', serif;
+    font-size:1.2rem;
+    color:var(--ink);
+    margin-bottom:4px;
   }
-  .form-msg.show{ display:block; }
+  .booking-card span{
+    font-size:0.97rem;
+    color:#3D5A6E;
+  }
 
   /* ---------- SERVICE AREA ---------- */
   .service-area{
@@ -781,7 +776,7 @@
       <p class="sub reveal">Loving Care Laundry Service is your friendly, local pickup &amp; delivery laundry, run by Watsana right here in Greenfields. We treat every garment like it's our own. No fuss, no stress, just fresh, clean laundry back at your door.</p>
       <div class="hero-ctas reveal">
         <a href="tel:0455527765" class="btn btn-primary">Call Now: 0455 527 765</a>
-        <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+        <a href="mailto:cleanlovingcarelaundry@gmail.com" class="btn btn-secondary">Email Us to Book</a>
       </div>
     </div>
     <div class="bubble-art reveal">
@@ -951,7 +946,7 @@
   <div class="wrap">
     <div class="about-frame reveal">
       <h2>Hi, I'm Watsana</h2>
-      <p>(Insert Here)</p>
+      <p>Let us take your chore so you can get on with the fun things in life!</p>
 
       <p class="signoff">With care,<br><span class="accent-script">Watsana</span></p>
     </div>
@@ -983,22 +978,22 @@
         <a href="mailto:cleanlovingcarelaundry@gmail.com">cleanlovingcarelaundry@gmail.com</a>
       </div>
     </div>
-    <form id="contactForm" class="reveal">
-      <div>
-        <label for="name">Your name</label>
-        <input type="text" id="name" name="name" placeholder="Jane Smith" required>
-      </div>
-      <div>
-        <label for="phone">Phone number</label>
-        <input type="tel" id="phone" name="phone" placeholder="04xx xxx xxx" required>
-      </div>
-      <div>
-        <label for="message">What do you need help with?</label>
-        <textarea id="message" name="message" placeholder="Tell us a little about your laundry needs..."></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Send Message</button>
-      <p class="form-msg" id="formMsg">Thanks! We'll be in touch soon. 🌿</p>
-    </form>
+    <div class="booking-ctas reveal">
+      <a href="tel:0455527765" class="booking-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+        <div>
+          <strong>Call to book</strong>
+          <span>0455 527 765</span>
+        </div>
+      </a>
+      <a href="mailto:cleanlovingcarelaundry@gmail.com" class="booking-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg>
+        <div>
+          <strong>Email to book</strong>
+          <span>cleanlovingcarelaundry@gmail.com</span>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -1083,15 +1078,6 @@
   revealEls.forEach(el => observer.observe(el));
 
   // contact form
-  const form = document.getElementById('contactForm');
-  const formMsg = document.getElementById('formMsg');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    formMsg.classList.add('show');
-    form.reset();
-    setTimeout(() => formMsg.classList.remove('show'), 6000);
-  });
-
   // footer year
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
